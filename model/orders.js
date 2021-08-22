@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
+const crypto = require("crypto");
+
 const Schema = mongoose.Schema;
 
 const ordersSchema = new Schema({
+    uuid: {type: String, required: false, unique: true},
             user_email: {type: String, required: true},
             dish_count: {type: String, required: true},
             dish_id: {type: String, required: false},
@@ -13,5 +16,11 @@ const ordersSchema = new Schema({
 },{
 	timestamps: true
 });
+
+ordersSchema.pre("save", function(next){
+	this.uuid = "order"+ crypto.pseudoRandomBytes(6).toString('hex').toUpperCase()
+	next();
+})
+
 
 module.exports = mongoose.model('orders', ordersSchema);

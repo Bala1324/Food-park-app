@@ -16,7 +16,7 @@ router.get("/login", userService.loginUser);
  router.put("/resetPassword", userService.resetPassword);
  router.put("/logout", userService.logout);
  router.get("/getFoodDetails",getTheFoodDetails);
- router.get("/createOrder",userService.createOrder);
+ router.post("/createOrder",userService.createOrder);
 
 module.exports = router;
 

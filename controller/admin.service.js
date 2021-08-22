@@ -39,8 +39,6 @@ async function updateTheFoodDetails(req,callback) {
 	console.log(update)
 	let option = {new : true}
 	await food.findOneAndUpdate(condition, update, option).exec().then((data)=>{
-	
-
 		callback(data);
 	})
 }

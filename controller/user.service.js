@@ -162,10 +162,10 @@ async function getTheFoodDetails(req,callback) {
 async function createOrder(req,res) {
 
 		 let email = req.body.user_email;
-		 let dish_id = req.body.dish_id;
+		 let uuid = req.body.uuid;
 		 let dish_count = req.body.dish_count;
-		 let users = await user.findOne({"email": "bala@gmail.com"}).exec();
-		let foodDtetail = await food.findOne({ "dish_name" : "biriyani"});
+		 let users = await user.findOne({"email": email}).exec();
+		let foodDtetail = await food.findOne({ "uuid" : uuid});
 		let dishName = foodDtetail.dish_name;
 		let dishPrice =foodDtetail.dish_price;
 		let dishId =  foodDtetail._id;
